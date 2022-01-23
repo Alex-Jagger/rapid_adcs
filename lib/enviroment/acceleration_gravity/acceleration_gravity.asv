@@ -1,0 +1,40 @@
+%% acceleration_gravity
+% Bruin Space Group - ADCS Subsystem team
+%   Author:     Jiaping Zhen
+%   Updated:    1/22/2022
+% Reference: Fundamentals of Astrodynamics and Applications, 3rd edition,
+% By David A.Vallado, Chap 8.7,  Page 589
+% ----------------------------------------------------------------------- %
+% Inputs:
+%   - r: Position vector.
+% Outputs:
+%   - a_g: Acceleration vector because of gravity.
+%
+% Variables:
+% ----------------------------------------------------------------------- %
+function a_g = acceleration_gravity(r)
+r_I = r(1);
+r_J = r(2);
+r_K = r(3);
+r_norm = norm(r);
+
+J_2 = 1.08262668355e-3;
+J_3 = -2.53265648533e-6;
+
+R_E = 6378136.3;
+MU = 398600441.5;
+
+a_I_J_2 = -(3*J_2*MU*R_E^2*r_I)/(2*r_norm^5)*(1 - 5*r_K^2/r_norm^2);
+a_J_J_2 = -(3*J_2*MU*R_E^2*r_J)/(2*r_norm^5)*(1 - 5*r_K^2/r_norm^2);
+a_K_J_2 = -(3*J_2*MU*R_E^2*r_K)/(2*r_norm^5)*(3 - 5*r_K^2/r_norm^2);
+a_J_2 = [a_I_J_2; a_J_J_2; a_K_J_2];
+
+a_I_J_3 = -(5*J_3*MU*R_E^3*r_I)/(2*r_norm^7)*(3*r_K - 7*r_K^3/r_norm^2);
+a_J_J_3 = -(5*J_3*MU*R_E^3*r_J)/(2*r_norm^7)*(3*r_K - 7*r_K^3/r_norm^2);
+a_K_J_3 = -(5*J_2*MU*R_E^2)/(2*r_norm^5)*...
+            (6*r_K^2 - 7*r_K^4/r_norm^2 -3/5*r_norm^2);
+a_J_3 = [a_I_J_3; a_J_J_3; a_K_J_3];
+
+a_g = -MU/r_norm^3*r + a_J_2 + a_J_3;
+end
+
