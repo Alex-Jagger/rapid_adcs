@@ -9,8 +9,6 @@
 %   - r: Position vector.
 % Outputs:
 %   - a_g: Acceleration vector because of gravity.
-%
-% Variables:
 % ----------------------------------------------------------------------- %
 function a_g = acceleration_gravity(r, const)
 r_I = r(1);
