@@ -6,6 +6,6 @@ Add-Ons:
   - Aerospace Blockset
   - Robotics System Toolbox
   
-Files: 
-  - SatVR.x3d
+To export a new version run:
+save_system('OrbitSimV[version]','OrbitSimV[version]_export','BreakUserLinks',1)
   
