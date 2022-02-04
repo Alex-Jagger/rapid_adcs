@@ -16,7 +16,7 @@
 %
 % Note: Leap seconds are ingnored here.
 % ----------------------------------------------------------------------- %
-function JD = julian_date(yr, mo, d, h, min, s)
-    JD = 367*yr - fix(7*(yr + fix((mo + 9)/12))/4) + fix(275*mo/9) + d +...
-        1721013.5 + (((s/60) + min)/60 + h)/24;
+function JD = julian_date(ymd, hms)
+    JD = 367*ymd.y - fix(7*(ymd.y + fix((ymd.m + 9)/12))/4) + fix(275*ymd.m/9) + ymd.d +...
+        1721013.5 + (((hms.s/60) + hms.m)/60 + hms.h)/24;
 end

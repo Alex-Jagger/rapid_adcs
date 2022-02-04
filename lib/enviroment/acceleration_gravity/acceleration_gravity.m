@@ -19,8 +19,8 @@ r_norm = norm(r);
 J_2 = 1.08262668355e-3;
 J_3 = -2.53265648533e-6;
 
-r_e = const.gbl.R_EARTH_KM*const.convert.KM2M;
-mu = const.gbl.MU_EARTH_KM3_S2*(const.convert.KM2M)^3;
+r_e = const.gbl.R_EARTH_KM*const.conv.KM2M;
+mu = const.gbl.MU_EARTH_KM3_S2*(const.conv.KM2M)^3;
 
 a_I_J_2 = -(3*J_2*mu*r_e^2*r_I)/(2*r_norm^5)*(1 - 5*r_K^2/r_norm^2);
 a_J_J_2 = -(3*J_2*mu*r_e^2*r_J)/(2*r_norm^5)*(1 - 5*r_K^2/r_norm^2);
