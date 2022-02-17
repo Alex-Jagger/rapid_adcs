@@ -1,13 +1,22 @@
 clear all; close all; clc
 %%
+% Earth Orientation Parameters
+% Col_1: Modified Julian Day.
+% Col_2: xp. ['']
+% Col_3: yp. ['']
+% Col_4: Delta_UT1 = UT1 - UTC. ['']
+% Col_5: Length of the Day. 
+% Col_6: dX. ['']
+% Col_7: dY. ['']
 EOP_table= readtable('eopc04_14_IAU2000.62-now.csv');
-%%
 EOP = [EOP_table.MJD EOP_table.x_pole EOP_table.y_pole...
     -EOP_table.UT1_UTC EOP_table.LOD EOP_table.dX EOP_table.dY];
 %%
+% Delta_AT: Atomic Time Difference = TAI - UTC. ['']
 Delta_AT_table = readtable('Delta_AT.csv');
 Delta_AT = [Delta_AT_table.Var1 Delta_AT_table.Var7];
 %%
+% CIP parameters coefficients.
 X_CIP.coe_0 = readmatrix('tab5.2a.txt','Range','38:1343');
 X_CIP.coe_0 = X_CIP.coe_0(:, 2:end);
 X_CIP.coe_1 = readmatrix('tab5.2a.txt','Range','1347:1599');
