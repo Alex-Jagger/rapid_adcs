@@ -1,4 +1,4 @@
-clc
+%clc
 
 ymd.y = 2004;
 ymd.m = 5;

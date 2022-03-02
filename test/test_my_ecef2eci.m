@@ -1,4 +1,4 @@
-clc
+%clc
 
 ymd = struct('y', 2004, 'm', 4, 'd', 6);
 UTC = struct('h', 7, 'm', 51, 's', 28.386009);

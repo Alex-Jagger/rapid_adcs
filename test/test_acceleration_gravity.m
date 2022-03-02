@@ -1,4 +1,4 @@
-clc
+%clc
 
 r = [const.gbl.R_EARTH_KM*const.conv.KM2M; 0; 0];
 
